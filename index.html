@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>AK Calculator</title>
+    <title>AK Tournament Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
             <h3>Global Settings</h3>
             <div class="form-group">
                 <label for="house">House Taken (%):</label>
-                <input id="house" type="number" value="10">
+                <input id="house" type="number" value="10" min="0" max="100">
             </div>
             <div class="form-group">
                 <label>Define Winners by:</label>
@@ -27,22 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="winnersVal">Winners (Count or %):</label>
-                <input id="winnersVal" placeholder="e.g. 5" type="number">
-            </div>
-            <div class="form-group">
-                <label for="peopleMode">People Structure:</label>
-                <select id="peopleMode">
-                    <option value="equal">Equal</option>
-                    <option value="linear" selected>Pyramid (Staggered)</option>
-                    <option value="exp">Halving (Exponential)</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="prizeMode">Prize Structure:</label>
-                <select id="prizeMode">
-                    <option value="linear" selected>Linear (Staggered)</option>
-                    <option value="exp">Doubling (Exponential)</option>
-                </select>
+                <input id="winnersVal" placeholder="e.g. 5" type="number" min="1">
             </div>
             <div class="checkbox-group">
                 <label>
@@ -54,24 +39,23 @@
             <h3>Tournament Specific Settings</h3>
             <div class="form-group">
                 <label for="players">Number of Players:</label>
-                <input id="players" placeholder="e.g. 50" type="number">
+                <input id="players" placeholder="e.g. 50" type="number" min="2">
             </div>
             <div class="form-group">
                 <label for="cost">Entry Fee (Gold):</label>
-                <input id="cost" placeholder="e.g. 1000" type="number">
+                <input id="cost" placeholder="e.g. 1000" type="number" min="0">
             </div>
             <div class="form-group">
                 <label for="tiers">Number of Tiers:</label>
-                <input id="tiers" placeholder="Default: 1" type="number">
+                <input id="tiers" placeholder="Default: 1" type="number" min="1">
             </div>
         </div>
     </div>
 
-    <button onclick="calculatePayout()">Calculate Payout</button>
+    <button id="calcBtn">Calculate Payout</button>
 
-    <!-- Results Display -->
-    <div id="error-area"></div>
-    <div id="result-area"></div>
+    <div id="error-area" class="message-area error" style="display:none;"></div>
+    <div id="result-area" class="result-container" style="display:none;"></div>
 </div>
 
 <script src="calculator.js"></script>
